@@ -1,0 +1,222 @@
+/* ───────────────────────────────────────────────────────
+   Things for the VS Code Markdown preview
+   Port of the Obsidian "Things" theme v2.2.4 by @colineckert
+   https://github.com/colineckert/obsidian-things (MIT)
+
+   Values are copied from Things' theme.css, plus the Obsidian
+   defaults it relies on (text, background, border). Selectors
+   target VS Code's preview DOM:
+   body.vscode-light / body.vscode-dark.
+   ─────────────────────────────────────────────────────── */
+
+/* ── Shared tokens ─────────────────────────────────────── */
+body.vscode-body {
+  --t-blue: #2e80f2;
+  --t-pink: #ff82b2;
+  --t-green: #3eb4bf;
+  --t-yellow: #e5b567;
+  --t-red: #e83e3e;
+
+  --t-font-text: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter,
+    Ubuntu, sans-serif;
+  --t-font-mono: 'JetBrains Mono', 'Fira Code', Menlo, SFMono-Regular, Consolas,
+    'Roboto Mono', monospace;
+
+  --t-line-width: 40rem; /* Obsidian "readable line length" */
+  --t-radius-s: 4px;
+}
+
+/* ── Light ─────────────────────────────────────────────── */
+body.vscode-light {
+  color-scheme: light;
+  --t-bg: #ffffff;
+  --t-text: #222222;
+  --t-muted: hsl(212, 10%, 37%);
+  --t-faint: hsl(212, 10%, 67%);
+  --t-accent: hsl(215, 75%, 60%);
+  --t-accent-hover: hsl(215, 75%, 50%);
+  --t-border: #ebedf0;
+  --t-code-bg: #eceef1;
+  --t-code-block-bg: #f0f2f5;
+  --t-highlight: rgba(255, 208, 0, 0.4);
+
+  --atom-gray-1: #ababab;
+  --atom-gray-2: #383a42;
+  --atom-red: #e75545;
+  --atom-green: #4ea24c;
+  --atom-blue: #3d74f6;
+  --atom-purple: #a625a4;
+  --atom-aqua: #0084bc;
+  --atom-yellow: #e35649;
+  --atom-orange: #986800;
+}
+
+/* ── Dark (also used for high contrast) ────────────────── */
+body.vscode-dark,
+body.vscode-high-contrast:not(.vscode-high-contrast-light) {
+  color-scheme: dark;
+  --t-bg: #1c2127;
+  --t-text: #dadada;
+  --t-muted: hsl(212, 15%, 78%);
+  --t-faint: hsl(212, 15%, 43%);
+  --t-accent: hsl(215, 75%, 70%);
+  --t-accent-hover: hsl(215, 75%, 82%);
+  --t-border: #35393e;
+  --t-code-bg: #303540;
+  --t-code-block-bg: #282c34;
+  --t-highlight: rgba(255, 208, 0, 0.4);
+
+  --atom-gray-1: #5c6370;
+  --atom-gray-2: #abb2bf;
+  --atom-red: #e06c75;
+  --atom-orange: #d19a66;
+  --atom-green: #98c379;
+  --atom-aqua: #56b6c2;
+  --atom-purple: #c678dd;
+  --atom-blue: #61afef;
+  --atom-yellow: #e5c07b;
+}
+
+/* ── Page ──────────────────────────────────────────────── */
+body.vscode-body {
+  background: var(--t-bg);
+  color: var(--t-text);
+  font-family: var(--t-font-text);
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: var(--t-line-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ── Headings ──────────────────────────────────────────── */
+body.vscode-body :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--t-font-text);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 1.4em 0 0.5em;
+  border: none;
+  padding: 0;
+}
+body.vscode-body h1 { font-size: 1.7rem; color: var(--t-text); }
+body.vscode-body h2 {
+  font-size: 1.5rem;
+  color: var(--t-text);
+  border-bottom: 2px solid var(--t-border);
+  padding-bottom: 2px;
+  margin-bottom: 8px;
+}
+body.vscode-body h3 { font-size: 1.2rem; color: var(--t-blue); }
+body.vscode-body h4 { font-size: 1.1rem; color: var(--t-yellow); }
+body.vscode-body h5 { font-size: 1rem; color: var(--t-red); }
+body.vscode-body h6 { font-size: 0.9rem; color: var(--t-muted); }
+body.vscode-body > :first-child { margin-top: 0; }
+
+/* ── Inline text ───────────────────────────────────────── */
+body.vscode-body strong { color: var(--t-pink); font-weight: 700; }
+body.vscode-body em { color: var(--t-pink); }
+body.vscode-body mark {
+  background: var(--t-highlight);
+  color: inherit;
+  border-radius: 2px;
+}
+body.vscode-body mark :is(strong, em) { color: var(--t-text); }
+
+body.vscode-body a {
+  color: var(--t-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+body.vscode-body a:hover { color: var(--t-accent-hover); }
+
+/* ── Blocks ────────────────────────────────────────────── */
+body.vscode-body p,
+body.vscode-body ul,
+body.vscode-body ol { margin: 0 0 1em; }
+body.vscode-body li + li { margin-top: 0.15em; }
+body.vscode-body li::marker { color: var(--t-faint); }
+
+body.vscode-body blockquote {
+  margin: 1em 0;
+  padding: 0 0 0 1.5em;
+  background: transparent;
+  border-left: 2px solid var(--t-accent);
+  color: var(--t-green);
+  font-style: italic;
+}
+
+body.vscode-body hr {
+  border: none;
+  border-top: 2px solid var(--t-border);
+  height: 0;
+  margin: 2em 0;
+  background: none;
+}
+
+body.vscode-body img {
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Task lists (rendered by some preview extensions) */
+body.vscode-body li.task-list-item { list-style: none; }
+body.vscode-body li.task-list-item input[type='checkbox'] { margin-right: 0.5em; }
+body.vscode-body li.task-list-item:has(input:checked) { color: var(--t-faint); }
+
+/* ── Tables ────────────────────────────────────────────── */
+body.vscode-body table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.95em;
+}
+body.vscode-body :is(th, td) {
+  border: 1px solid var(--t-border);
+  padding: 0.35em 0.75em;
+}
+body.vscode-body th { font-weight: 600; text-align: left; }
+body.vscode-body thead { border-bottom: none; }
+
+/* ── Code ──────────────────────────────────────────────── */
+body.vscode-body code {
+  font-family: var(--t-font-mono);
+  font-size: 0.85em;
+  background: var(--t-code-bg);
+  color: inherit;
+  padding: 0.1em 0.3em;
+  border-radius: var(--t-radius-s);
+}
+body.vscode-body pre {
+  background: var(--t-code-block-bg);
+  border: 1px solid var(--t-border);
+  border-radius: var(--t-radius-s);
+  padding: 0.8em 1em;
+  overflow-x: auto;
+  line-height: 1.45;
+}
+body.vscode-body pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.85em;
+  color: var(--atom-gray-2);
+}
+
+/* One Dark syntax colors (Things' Prism rules, mapped to highlight.js) */
+body.vscode-body pre :is(.hljs-comment, .hljs-quote, .hljs-meta) {
+  color: var(--atom-gray-1);
+  font-style: italic;
+}
+body.vscode-body pre :is(.hljs-punctuation, .hljs-subst) { color: var(--atom-gray-2); }
+body.vscode-body pre :is(.hljs-tag, .hljs-name, .hljs-selector-tag, .hljs-params,
+  .hljs-template-variable, .hljs-deletion) { color: var(--atom-red); }
+body.vscode-body pre :is(.hljs-number, .hljs-literal, .hljs-attr, .hljs-attribute,
+  .hljs-symbol, .hljs-property) { color: var(--atom-orange); }
+body.vscode-body pre :is(.hljs-string, .hljs-char, .hljs-addition) { color: var(--atom-green); }
+body.vscode-body pre :is(.hljs-operator, .hljs-link, .hljs-regexp) { color: var(--atom-aqua); }
+body.vscode-body pre :is(.hljs-keyword, .hljs-doctag, .hljs-variable) { color: var(--atom-purple); }
+body.vscode-body pre :is(.hljs-title, .hljs-title.function_, .hljs-section) { color: var(--atom-blue); }
+/* after the blue rule so class names win over the generic .hljs-title */
+body.vscode-body pre :is(.hljs-title.class_, .hljs-type, .hljs-built_in,
+  .hljs-selector-class, .hljs-selector-id) { color: var(--atom-yellow); }
+body.vscode-body pre .hljs-strong { font-weight: bold; }
+body.vscode-body pre .hljs-emphasis { font-style: italic; }
