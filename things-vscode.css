@@ -22,7 +22,7 @@ body.vscode-body {
   --t-font-mono: 'JetBrains Mono', 'Fira Code', Menlo, SFMono-Regular, Consolas,
     'Roboto Mono', monospace;
 
-  --t-line-width: 40rem; /* Obsidian "readable line length" */
+  --t-line-width: 60rem; /* Obsidian "readable line length" */
   --t-radius-s: 4px;
 }
 
